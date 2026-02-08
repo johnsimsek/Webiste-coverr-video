@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inky Vibes Tattoo</title>
+
+<style>
+html,body{
+margin:0;
+padding:0;
+height:100%;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.hero{
+position:relative;
+width:100%;
+height:100vh;
+overflow:hidden;
+background:black;
+}
+
+.hero video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* dark overlay */
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.4);
+z-index:1;
+}
+
+/* TEXT */
+.title{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:2;
+color:white;
+font-size:48px;
+font-weight:700;
+letter-spacing:6px;
+text-align:center;
+white-space:nowrap;
+}
+
+/* mobile */
+@media(max-width:768px){
+.title{
+font-size:28px;
+letter-spacing:3px;
+}
+.hero{
+height:100svh;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+
+<video id="bgvideo" autoplay muted playsinline preload="auto">
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="title">INKY VIBES TATTOO</div>
+
+</div>
+
+<script>
+const v=document.getElementById("bgvideo");
+
+v.addEventListener("timeupdate",()=>{
+if(v.currentTime>=15){
+v.currentTime=0;
+v.play();
+}
+});
+
+v.play().catch(()=>{});
+</script>
+
+</body>
+</html>
