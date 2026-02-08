@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Inky Vibes Tattoo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+html,body{
+height:100%;
+margin:0;
+background:#000;
+font-family:'Montserrat',Arial,Helvetica,sans-serif;
+}
+
+.hero{
+position:relative;
+height:100svh;
+width:100%;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+/* video */
+video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+}
+
+/* overlay */
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:1;
+}
+
+/* center */
+.center{
+position:relative;
+z-index:2;
+opacity:0;
+animation:fadeIn 1.4s ease forwards;
+}
+
+/* title */
+.title{
+color:white;
+font-weight:800;
+font-size:clamp(28px,6vw,64px);
+letter-spacing:.25em;
+margin-bottom:28px;
+text-shadow:
+0 0 8px rgba(255,255,255,.4),
+0 0 22px rgba(255,255,255,.15);
+}
+
+/* button */
+.btn{
+display:inline-block;
+padding:14px 36px;
+border:2px solid white;
+color:white;
+text-decoration:none;
+letter-spacing:.25em;
+font-size:12px;
+transition:.3s;
+}
+
+.btn:hover{
+background:white;
+color:black;
+box-shadow:0 0 18px rgba(255,255,255,.6);
+}
+
+/* fade */
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+<video id="v" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="center">
+<div class="title">INKY VIBES TATTOO</div>
+
+<a class="btn" href="https://form.jotform.com/Tattoo_inkyvibestattoo/Ajanvaraus" target="_blank">
+VARAA AIKA NYT
+</a>
+</div>
+
+</div>
+
+<script>
+const v=document.getElementById("v");
+
+function tryPlay(){v.play().catch(()=>{});}
+window.addEventListener("load",tryPlay);
+
+// 15s loop
+v.addEventListener("timeupdate",()=>{
+if(v.currentTime>=15){v.currentTime=0;}
+});
+</script>
+
+</body>
+</html>
