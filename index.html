@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Inky Vibes Tattoo</title>
+
+<style>
+html,body{
+height:100%;
+margin:0;
+background:#000;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.hero{
+position:relative;
+height:100svh;
+width:100%;
+overflow:hidden;
+}
+
+video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* Dark overlay */
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:1;
+}
+
+/* Title */
+.title{
+position:absolute;
+top:45%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:2;
+color:white;
+font-size:44px;
+font-weight:700;
+letter-spacing:6px;
+white-space:nowrap;
+text-align:center;
+}
+
+/* Button */
+.btn{
+position:absolute;
+top:55%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:2;
+padding:14px 36px;
+border:2px solid white;
+color:white;
+text-decoration:none;
+letter-spacing:3px;
+font-size:14px;
+transition:.3s;
+}
+
+.btn:hover{
+background:white;
+color:black;
+}
+
+/* Mobile */
+@media(max-width:768px){
+.title{font-size:28px;letter-spacing:3px;}
+.btn{padding:12px 26px;font-size:12px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+<video id="v" autoplay muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="title">INKY VIBES TATTOO</div>
+
+<a class="btn" href="https://form.jotform.com/Tattoo_inkyvibestattoo/Ajanvaraus" target="_blank">VARAA AIKA NYT</a>
+
+</div>
+
+<script>
+const v=document.getElementById("v");
+
+// force autoplay
+function tryPlay(){
+v.play().catch(()=>{});
+}
+window.addEventListener("load",tryPlay);
+
+// loop every 15 seconds
+v.addEventListener("timeupdate",()=>{
+if(v.currentTime>=15){
+v.currentTime=0;
+}
+});
+</script>
+
+</body>
+</html>
